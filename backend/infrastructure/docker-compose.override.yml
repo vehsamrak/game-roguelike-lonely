@@ -1,9 +1,0 @@
-# move this file to root directory and use it to override dev config
-version: '3'
-services:
-  nginx:
-    ports:
-      - 8000:80
-  mysql:
-    ports:
-      - 3307:3306
