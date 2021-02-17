@@ -8,10 +8,10 @@
 1. Запуск контейнеров, из корня проекта: `docker-compose up -d`
 
 ### Обновление зависимостей
-Обновление зависимостей осуществляется через composer внутри контейнера: `docker-compose exec php composer update`.
+`docker-compose exec php composer update`.
 
 ### Миграции
-Запуск миграций: `docker-compose exec php bin/console doc:mig:mig -n`
+`docker-compose exec php bin/console doc:mig:mig -n`
 
 ### Тесты
-Запуск внутри контейнера: `docker-compose exec php bin/phpunit`
+`docker-compose exec php bin/phpunit`
