@@ -27,7 +27,6 @@ services:
     container_name: game_roguelike_lonely_mysql
     volumes:
       - game_roguelike_lonely_mysql_data:/var/lib/mysql
-      - /etc/localtime:/etc/localtime:ro
       - ./infrastructure/mysql/configuration:/etc/mysql/conf.d
     environment:
       MYSQL_ROOT_PASSWORD: root
