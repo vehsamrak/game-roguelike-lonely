@@ -1,0 +1,44 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:latest
+    container_name: game_roguelike_lonely_nginx
+    depends_on:
+      - mysql
+      - php
+    networks:
+      - game_roguelike_lonely
+    volumes:
+      - .:/project
+      - ./infrastructure/nginx.conf:/etc/nginx/conf.d/default.conf
+
+  php:
+    container_name: game_roguelike_lonely_php
+    build: infrastructure
+    volumes:
+      - .:/project
+      - ./infrastructure/php.ini:/usr/local/etc/php/php.ini
+    entrypoint: /project/infrastructure/entrypoint.sh
+    networks:
+      - game_roguelike_lonely
+
+  mysql:
+    image: mysql:5.7
+    container_name: game_roguelike_lonely_mysql
+    volumes:
+      - game_roguelike_lonely_mysql_data:/var/lib/mysql
+      - /etc/localtime:/etc/localtime:ro
+      - ./infrastructure/mysql/configuration:/etc/mysql/conf.d
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: game_roguelike_lonely
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: password
+    networks:
+      - game_roguelike_lonely
+
+volumes:
+  game_roguelike_lonely_mysql_data:
+
+networks:
+  game_roguelike_lonely:
