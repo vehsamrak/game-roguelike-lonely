@@ -1,0 +1,13 @@
+version: '3'
+services:
+  game_roguelike_lonely:
+    container_name: game-roguelike-lonely
+    restart: "no"
+    build: .
+    volumes:
+      - ../..:/go/src/github.com/vehsamrak/game-roguelike-lonely
+      - game_roguelike_lonely_dependencies:/go/src
+    entrypoint: /go/src/github.com/vehsamrak/game-roguelike-lonely/build/package/entrypoint-dev.sh
+
+volumes:
+  game_roguelike_lonely_dependencies:
