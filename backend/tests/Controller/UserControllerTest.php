@@ -4,7 +4,7 @@ namespace App\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class PostControllerTest extends WebTestCase
+class UserControllerTest extends WebTestCase
 {
     public function testShowPost()
     {
@@ -13,5 +13,17 @@ class PostControllerTest extends WebTestCase
         $client->request('GET', '/user');
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
+    }
+
+    /**
+     * @test
+     */
+    public function environmentMustBeTest(): void
+    {
+       static::bootKernel();
+
+       $environment = static::$kernel->getEnvironment();
+
+       $this->assertSame('test', $environment);
     }
 }
