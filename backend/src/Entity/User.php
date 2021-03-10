@@ -19,11 +19,13 @@ class User
 
     /**
      * @ORM\Column(type="string", length=190)
+     * @Assert\Unique
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=190)
+     * @Assert\Unique
      */
     private $email;
 
