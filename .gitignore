@@ -1,0 +1,8 @@
+# ide
+.idea
+.vscode
+
+# Mac
+.DS_Store
+._*
+Thumbs.db
